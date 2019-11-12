@@ -1,11 +1,17 @@
 (function()
 {
+        // Get redmine hostname
+        var hostname = location.href.replace(/(https?:\/\/[^\/]+)\/.+/, "$1");
+
         /**
          * Needs to be bound to the DOM object of the relevant A element on call!
          */
         var retarget = function()
         {
-                this.target = '_blank';
+                if (!this.href.startsWith(hostname)) {
+                        this.classList.add('external');
+                        this.target = '_blank';
+                }
         };
 
         if (document.observe)   // Redmine with Prototype?...
@@ -23,7 +29,7 @@
         {
                 jQuery(document).ready(function()
                 {
-                        jQuery('div.attachments a, a.external').each(retarget);
+                        jQuery('div.attachments a, a').each(retarget);
                 });
         }
         else // Redmine with alien space technology from the future!... :-o

@@ -1,4 +1,6 @@
-## Redmine plugin: External links in new window
+## Redmine plugin: External links in new window *for Markdown*
+
+*This fork is work with markdown only!*
 
 ### About
 
